@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Соседно — Подбор идеального соседа для студентов</title>
+  <meta name="description" content="Первая в России платформа для подбора соседей, основанная на бытовой совместимости студентов. Алгоритм анализирует привычки, бюджет и ритм жизни." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=3" />
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!--  TOP NAV                                                     -->
+<!-- ============================================================ -->
+<header class="navbar" id="navbar">
+  <nav class="navbar__inner">
+    <!-- Logo -->
+    <a href="#" class="navbar__logo">
+      <span class="material-symbols-outlined navbar__logo-icon" aria-hidden="true">home_work</span>
+      Соседно
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="navbar__links" id="navLinks">
+      <li><a href="#how" class="nav-link">Как это работает</a></li>
+      <li><a href="#features" class="nav-link">Почему удобно</a></li>
+      <li><a href="#safety" class="nav-link">Безопасность</a></li>
+      <li><a href="#faq" class="nav-link">FAQ</a></li>
+    </ul>
+
+    <!-- CTA -->
+    <a href="waitlist.html" class="btn btn--primary navbar__cta">
+      Получить ранний доступ
+    </a>
+
+    <!-- Hamburger (mobile) -->
+    <button class="navbar__hamburger" id="hamburgerBtn" aria-label="Меню" onclick="toggleMobileMenu()">
+      <span class="material-symbols-outlined" id="hamburgerIcon">menu</span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#how" onclick="closeMobileMenu()">Как это работает</a></li>
+      <li><a href="#features" onclick="closeMobileMenu()">Почему удобно</a></li>
+      <li><a href="#safety" onclick="closeMobileMenu()">Безопасность</a></li>
+      <li><a href="#faq" onclick="closeMobileMenu()">FAQ</a></li>
+    </ul>
+    <a href="waitlist.html" class="btn btn--primary btn--full" onclick="closeMobileMenu()">
+      Получить ранний доступ
+    </a>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!--  MAIN CONTENT                                                 -->
+<!-- ============================================================ -->
+<main>
+
+  <!-- HERO -->
+  <section class="hero section-pad" id="hero">
+    <div class="container hero__grid">
+
+      <!-- Left: Text -->
+      <div class="hero__text">
+        <h1 class="hero__headline">
+          Подберем соседа,<br> с которым <em class="text-primary">правда&nbsp;комфортно</em> жить
+        </h1>
+        <p class="hero__sub">
+          Алгоритм Соседно анализирует ваши бытовые привычки, бюджет и ритм жизни, чтобы найти идеального сожителя. Забудьте о конфликтах из-за грязной посуды.
+        </p>
+        <div class="hero__ctas">
+          <a href="waitlist.html" class="btn btn--primary btn--lg">
+            Получить ранний доступ
+          </a>
+          <a href="#how" class="btn btn--ghost btn--lg">
+            Как это работает
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Mockup card -->
+      <div class="hero__mockup">
+        <div class="hero__mockup-glow" aria-hidden="true"></div>
+        <div class="mockup-card">
+          <!-- Window dots -->
+          <div class="mockup-card__dots">
+            <span class="dot dot--red"></span>
+            <span class="dot dot--yellow"></span>
+            <span class="dot dot--green"></span>
+            <span class="mockup-card__step">Шаг 2 из 4: Привычки</span>
+          </div>
+
+          <!-- Question chip group -->
+          <div class="mockup-card__question">
+            <p class="mockup-card__q-label">Как вы относитесь к гостям?</p>
+            <div class="chip-group">
+              <span class="chip chip--teal">Только по выходным</span>
+              <span class="chip chip--primary chip--selected">Всегда за!</span>
+              <span class="chip chip--neutral">Без ночевок</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Floating match card — sibling of mockup-card, not child -->
+        <div class="match-float" aria-label="Пример совпадения">
+          <div class="match-float__avatar">
+            <span class="material-symbols-outlined">person</span>
+          </div>
+          <div class="match-float__info">
+            <div class="match-float__name">Артем, 20</div>
+            <div class="match-float__uni">МГТУ им. Баумана</div>
+          </div>
+          <div class="match-float__score">
+            <div class="match-float__percent">94%</div>
+            <div class="match-float__label">Совместимость</div>
+            <div class="match-float__bar"><div class="match-float__bar-fill" style="width:94%"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="trust-bar">
+    <div class="container trust-bar__inner">
+      <div class="trust-item">
+        <span class="material-symbols-outlined trust-item__icon text-primary" aria-hidden="true">psychology</span>
+        <span>Учитываем привычки</span>
+      </div>
+      <div class="trust-item">
+        <span class="material-symbols-outlined trust-item__icon text-primary" aria-hidden="true">sentiment_satisfied</span>
+        <span>Избегаем конфликтов</span>
+      </div>
+      <div class="trust-item">
+        <span class="material-symbols-outlined trust-item__icon text-primary" aria-hidden="true">verified_user</span>
+        <span>Понятный подбор</span>
+      </div>
+      <div class="trust-item">
+        <span class="material-symbols-outlined trust-item__icon text-primary" aria-hidden="true">group_add</span>
+        <span>Студенческое сообщество</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-pad" id="how">
+    <div class="container">
+      <div class="section-header">
+        <h2>Простой путь к идеальному соседству</h2>
+        <p>Мы перевернули процесс поиска: сначала люди, потом жильё.</p>
+      </div>
+      <div class="steps-grid" id="features">
+        <div class="step-card">
+          <div class="step-card__num step-card__num--primary">1</div>
+          <h3>Анкета</h3>
+          <p>Расскажите о своём графике, бытовых привычках и отношении к домашним животным.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-card__num step-card__num--teal">2</div>
+          <h3>Анализ</h3>
+          <p>Наш алгоритм сравнивает тысячи профилей, чтобы найти тех, кто разделяет ваши ценности.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-card__num step-card__num--secondary">3</div>
+          <h3>Мэтч</h3>
+          <p>Знакомьтесь с кандидатами, общайтесь и получайте доступ к базе проверенного жилья.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIATOR BENTO -->
+  <section class="section-pad bg-surface-low">
+    <div class="container">
+      <div class="bento-grid">
+        <!-- Problem card -->
+        <div class="bento-card bento-card--light">
+          <h3>Обычный поиск — это лотерея</h3>
+          <ul class="problem-list">
+            <li>
+              <span class="material-symbols-outlined text-error" aria-hidden="true">cancel</span>
+              Неожиданные гости в 2 часа ночи
+            </li>
+            <li>
+              <span class="material-symbols-outlined text-error" aria-hidden="true">cancel</span>
+              Ссоры из-за дежурства по кухне
+            </li>
+            <li>
+              <span class="material-symbols-outlined text-error" aria-hidden="true">cancel</span>
+              Разные взгляды на бюджет
+            </li>
+          </ul>
+          <div class="bento-card__bg-img" aria-hidden="true"></div>
+        </div>
+
+        <!-- Solution card -->
+        <div class="bento-card bento-card--primary">
+          <h3>Соседно — это осознанность</h3>
+          <ul class="solution-list">
+            <li>
+              <span class="material-symbols-outlined text-teal-fixed" aria-hidden="true">check_circle</span>
+              Единый ритм жизни
+            </li>
+            <li>
+              <span class="material-symbols-outlined text-teal-fixed" aria-hidden="true">check_circle</span>
+              Общие домовые правила
+            </li>
+            <li>
+              <span class="material-symbols-outlined text-teal-fixed" aria-hidden="true">check_circle</span>
+              Честная финансовая часть
+            </li>
+          </ul>
+          <div class="bento-card__glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPATIBILITY ENGINE -->
+  <section class="section-pad">
+    <div class="container compat-grid">
+      <!-- Text -->
+      <div class="compat-text">
+        <h2>Мы учитываем всё, что имеет значение</h2>
+        <p>
+          Алгоритм работает не просто по ключевым словам. Мы создаём психологический и бытовой портрет, чтобы предсказать — будет ли вам комфортно жить вместе.
+        </p>
+        <div class="compat-features">
+          <div class="compat-feature">
+            <div class="compat-feature__icon bg-teal-light">
+              <span class="material-symbols-outlined text-teal" aria-hidden="true">schedule</span>
+            </div>
+            <div>
+              <h4>Режим дня</h4>
+              <p>Жаворонок или сова</p>
+            </div>
+          </div>
+          <div class="compat-feature">
+            <div class="compat-feature__icon bg-primary-light">
+              <span class="material-symbols-outlined text-primary" aria-hidden="true">cleaning_services</span>
+            </div>
+            <div>
+              <h4>Чистота</h4>
+              <p>График уборки</p>
+            </div>
+          </div>
+          <div class="compat-feature">
+            <div class="compat-feature__icon bg-secondary-light">
+              <span class="material-symbols-outlined text-secondary" aria-hidden="true">payments</span>
+            </div>
+            <div>
+              <h4>Бюджет</h4>
+              <p>Готовность делить траты на быт</p>
+            </div>
+          </div>
+          <div class="compat-feature">
+            <div class="compat-feature__icon bg-error-light">
+              <span class="material-symbols-outlined text-error" aria-hidden="true">pets</span>
+            </div>
+            <div>
+              <h4>Питомцы</h4>
+              <p>Аллергии и отношение к животным</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags visual -->
+      <div class="compat-tags-wrap">
+        <div class="compat-tags-inner">
+          <div class="compat-tags">
+            <span class="life-tag life-tag--primary life-tag--pulse">#Спорт</span>
+            <span class="life-tag life-tag--teal">#Без_курения</span>
+            <span class="life-tag life-tag--secondary">#Тишина_после_22</span>
+            <span class="life-tag life-tag--error">#Люблю_готовку</span>
+            <span class="life-tag life-tag--primary">#Учёба_в_приоритете</span>
+            <span class="life-tag life-tag--teal">#Веган</span>
+            <span class="life-tag life-tag--neutral">#Настолки</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE CARD PREVIEW -->
+  <section class="section-pad bg-white">
+    <div class="container profile-section">
+      <!-- Profile card -->
+      <div class="profile-card-wrap">
+        <div class="profile-card">
+          <div class="profile-card__header">
+            <div class="profile-card__avatar">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB27h7jPf8GMkgKC396dIJZjdtlH2G7sp9IWtCebZR89Ui8L6USI2MG7R3THVrpzVWxyWLlu4NBBfFKTUBUTPgTg29TjVmT9qDAhey3HB4cKLmxZ9aoSbu8x0YxFjTrQ6liI_dpuIvnTKqGwtgYeZdfZWOWdTQpijHiGnSaMq1wLurQAwOztsjxP5Qf4EF-N76DC0tCIh8-xbV8ONbnoKS7kYEve_STBV5nJOZbTddM4VLJcyXmdopY-II2-FhPsSj88Gzba0--voM"
+                alt="Никита, 21, студент ВШЭ"
+              />
+            </div>
+            <div class="profile-card__identity">
+              <h4>Никита, 21</h4>
+              <p>ВШЭ • Дизайн</p>
+              <span class="badge badge--teal">Verified</span>
+            </div>
+            <div class="profile-card__score">
+              <div class="profile-card__score-num">86%</div>
+              <div class="profile-card__score-label">Match Score</div>
+            </div>
+          </div>
+
+          <div class="profile-card__body">
+            <div class="profile-card__field">
+              <p class="field-label">Бюджет</p>
+              <p class="field-value">35 000 — 45 000 ₽ / мес</p>
+            </div>
+            <div class="profile-card__field">
+              <p class="field-label">Почему это мэтч?</p>
+              <div class="field-reason">
+                Никита тоже учится до позднего вечера и предпочитает тишину по будням. Как и вы, он не курит и готов делить расходы на общие хозтовары поровну.
+              </div>
+            </div>
+            <div class="profile-card__actions">
+              <button class="btn btn--primary">Написать</button>
+              <button class="btn btn--outline">Профиль</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div class="profile-text">
+        <h2>Знакомьтесь с теми, кто вам подходит</h2>
+        <p>
+          Мы не показываем бесконечную ленту. Мы предлагаем 3–5 наиболее точных совпадений. Каждый профиль содержит подробную аналитику совместимости.
+        </p>
+        <ul class="check-list">
+          <li>
+            <div class="check-list__icon">
+              <span class="material-symbols-outlined" aria-hidden="true">check</span>
+            </div>
+            <div>
+              <strong>Учёт личных границ</strong>
+              <p>Показываем только тех, кто разделяет ваше отношение к личному пространству.</p>
+            </div>
+          </li>
+          <li>
+            <div class="check-list__icon">
+              <span class="material-symbols-outlined" aria-hidden="true">check</span>
+            </div>
+            <div>
+              <strong>Более осознанный поиск</strong>
+              <p>Забудьте про пустые переписки. Общайтесь только с целевыми кандидатами.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE HELP -->
+  <section class="section-pad">
+    <div class="container">
+      <h2 class="text-center mb-16">Кому мы помогаем</h2>
+      <div class="use-cases-grid">
+        <div class="use-card">
+          <span class="material-symbols-outlined use-card__icon text-primary" aria-hidden="true">school</span>
+          <h3>Первокурсникам</h3>
+          <p>Переезжаете в Москву или Питер? Найдите соседа из своего вуза, чтобы идти к диплому вместе!</p>
+        </div>
+        <div class="use-card">
+          <span class="material-symbols-outlined use-card__icon text-teal" aria-hidden="true">explore</span>
+          <h3>Переехавшим</h3>
+          <p>Первый переезд — это стресс. Мы найдём соседа, который поможет адаптироваться и не превратит жизнь в кошмар.</p>
+        </div>
+        <div class="use-card">
+          <span class="material-symbols-outlined use-card__icon text-secondary" aria-hidden="true">savings</span>
+          <h3>Экономным</h3>
+          <p>Снимать вдвоём или втроём всегда дешевле. Мы поможем объединиться тем, кто ищет жильё в одном ценовом сегменте.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="section-pad bg-surface-low" id="safety">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge--error-light">Надёжность</span>
+        <h2>Безопасность прежде всего</h2>
+      </div>
+      <div class="safety-grid">
+        <div class="safety-card">
+          <div class="safety-card__icon bg-primary-light">
+            <span class="material-symbols-outlined text-primary icon-filled" aria-hidden="true">verified_user</span>
+          </div>
+          <h3>Верификация</h3>
+          <p>Мы проверяем профили через банковские приложения. Фейки и мошенники не пройдут.</p>
+        </div>
+        <div class="safety-card">
+          <div class="safety-card__icon bg-teal-light">
+            <span class="material-symbols-outlined text-teal icon-filled" aria-hidden="true">shield</span>
+          </div>
+          <h3>Защита данных</h3>
+          <p>Служба поддержки 24/7 и система отзывов от предыдущих соседей.</p>
+        </div>
+        <div class="safety-card">
+          <div class="safety-card__icon bg-secondary-light">
+            <span class="material-symbols-outlined text-secondary icon-filled" aria-hidden="true">lock</span>
+          </div>
+          <h3>Конфиденциальность</h3>
+          <p>Ваши данные никогда не продаются третьим сторонам и хранятся в зашифрованном виде.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad" id="faq">
+    <div class="container container--narrow">
+      <h2 class="text-center mb-16">Частые вопросы</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>Как работает алгоритм совместимости?</span>
+            <span class="material-symbols-outlined faq-item__icon" aria-hidden="true">expand_more</span>
+          </summary>
+          <div class="faq-item__a">
+            Мы используем систему весов для разных параметров. Бытовые привычки (чистота, гости, курение) имеют больший вес, чем общие интересы в кино или музыке — именно первые чаще всего становятся причиной конфликтов.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>Это бесплатно для студентов?</span>
+            <span class="material-symbols-outlined faq-item__icon" aria-hidden="true">expand_more</span>
+          </summary>
+          <div class="faq-item__a">
+            Базовый поиск и мэтчинг всегда будут бесплатными. Чтобы начать общение с понравившимся кандидатом, потребуются отклики — это сделано для предотвращения спама.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>Как вы гарантируете безопасность?</span>
+            <span class="material-symbols-outlined faq-item__icon" aria-hidden="true">expand_more</span>
+          </summary>
+          <div class="faq-item__a">
+            На этапе полноценного запуска мы введём верификацию через банковские системы. Сейчас мы вручную модерируем анкеты, чтобы исключить подозрительные аккаунты.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <span>Могу ли я сдать комнату?</span>
+            <span class="material-symbols-outlined faq-item__icon" aria-hidden="true">expand_more</span>
+          </summary>
+          <div class="faq-item__a">
+            Да! Соседно подходит как для тех, кто ищет себе соседа в уже снятую квартиру, так и для тех, кто хочет найти партнёра для совместного поиска жилья.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-section">
+    <div class="container cta-section__inner">
+      <h2>Найдите соседа, с которым<br>комфортно жить</h2>
+      <p>Присоединяйтесь к waitlist — запуск уже скоро.</p>
+      <a href="waitlist.html" class="btn btn--primary btn--xl">
+        Получить ранний доступ
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================ -->
+<!--  FOOTER                                                      -->
+<!-- ============================================================ -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a href="#" class="navbar__logo footer__logo-link">
+        <span class="material-symbols-outlined navbar__logo-icon" aria-hidden="true">home_work</span>
+        Соседно
+      </a>
+      <p>Первая в России платформа для подбора соседей, основанная на бытовой совместимости студентов.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Платформа</h4>
+      <ul>
+        <li><a href="#how">Как это работает</a></li>
+        <li><a href="#safety">Безопасность</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Юридическая информация</h4>
+      <ul>
+        <li><a href="#">Конфиденциальность</a></li>
+        <li><a href="#">Условия использования</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Контакты</h4>
+      <ul>
+        <li><a href="#">Поддержка</a></li>
+        <li><a href="#">Telegram</a></li>
+        <li><a href="#">ВКонтакте</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© 2026 Соседно. Сделано для студентов с любовью.</p>
+    <div class="footer__social">
+      <a href="#" class="footer__social-link" aria-label="Email">
+        <span class="material-symbols-outlined" aria-hidden="true">alternate_email</span>
+      </a>
+      <a href="#" class="footer__social-link" aria-label="Telegram">
+        <span class="material-symbols-outlined" aria-hidden="true">send</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="app.js"></script>
+</body>
+</html>

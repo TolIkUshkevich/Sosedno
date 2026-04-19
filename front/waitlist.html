@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Заявка на ранний доступ — Соседно</title>
+  <meta name="description" content="Заполните короткую анкету, и мы сообщим вам о запуске сервиса в вашем городе." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="waitlist.css" />
+</head>
+<body class="wl-body">
+
+  <!-- HEADER -->
+  <header class="wl-header">
+    <!-- Back link (mobile) -->
+    <a href="index.html" class="wl-back" aria-label="Назад на главную">
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+      <span>Назад</span>
+    </a>
+
+    <!-- Logo (desktop centered, mobile right) -->
+    <a href="index.html" class="wl-logo">Соседно</a>
+
+    <!-- Spacer for desktop centering -->
+    <div class="wl-header__spacer" aria-hidden="true"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="wl-main">
+    <!-- Decorative blobs -->
+    <div class="wl-blob wl-blob--blue" aria-hidden="true"></div>
+    <div class="wl-blob wl-blob--teal" aria-hidden="true"></div>
+
+    <!-- Form card -->
+    <div class="wl-card">
+      <!-- Gradient accent line -->
+      <div class="wl-card__accent" aria-hidden="true"></div>
+
+      <!-- Success state (hidden) -->
+      <div class="wl-success" id="wlSuccess" style="display:none">
+        <span class="material-symbols-outlined wl-success__icon icon-filled" aria-hidden="true">check_circle</span>
+        <h1>Вы в списке!</h1>
+        <p>Мы свяжемся с вами в Telegram, когда запустимся в вашем городе.</p>
+        <a href="index.html" class="btn btn--primary btn--lg">Вернуться на главную</a>
+      </div>
+
+      <!-- Form content -->
+      <div id="wlFormWrap">
+        <div class="wl-card__head">
+          <h1>Заявка на ранний доступ</h1>
+          <p>Заполните короткую анкету, и мы сообщим вам о&nbsp;запуске сервиса в вашем городе.</p>
+        </div>
+
+        <form class="wl-form" id="wlForm" onsubmit="submitWaitlist(event)" novalidate>
+
+          <!-- Name row -->
+          <div class="wl-row wl-row--2col">
+            <div class="wl-field">
+              <label for="wl-firstName">Имя</label>
+              <div class="wl-input-wrap">
+                <span class="material-symbols-outlined wl-input-icon" aria-hidden="true">person</span>
+                <input
+                  type="text"
+                  id="wl-firstName"
+                  placeholder="Иван"
+                  autocomplete="given-name"
+                  required
+                />
+              </div>
+            </div>
+            <div class="wl-field">
+              <label for="wl-lastName">Фамилия</label>
+              <input
+                type="text"
+                id="wl-lastName"
+                placeholder="Иванов"
+                autocomplete="family-name"
+              />
+            </div>
+          </div>
+
+          <!-- City -->
+          <div class="wl-field">
+            <label for="wl-city">Город</label>
+            <div class="wl-input-wrap">
+              <span class="material-symbols-outlined wl-input-icon" aria-hidden="true">location_on</span>
+              <input
+                type="text"
+                id="wl-city"
+                placeholder="Москва, Санкт-Петербург..."
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Telegram / Phone -->
+          <div class="wl-field" id="wlTelegramWrap">
+            <label for="wl-telegram">Telegram</label>
+            <div class="wl-input-wrap">
+              <span class="wl-input-icon wl-input-icon--at" aria-hidden="true">@</span>
+              <input
+                type="text"
+                id="wl-telegram"
+                placeholder="username"
+                class="wl-input--at"
+              />
+            </div>
+            <button type="button" class="wl-link-btn" onclick="toggleContact()">
+              Нет Telegram? Указать телефон
+            </button>
+          </div>
+
+          <div class="wl-field" id="wlPhoneWrap" style="display:none">
+            <label for="wl-phone">Номер телефона</label>
+            <div class="wl-input-wrap">
+              <span class="material-symbols-outlined wl-input-icon" aria-hidden="true">phone</span>
+              <input
+                type="tel"
+                id="wl-phone"
+                placeholder="+7 (999) 000-00-00"
+                autocomplete="tel"
+              />
+            </div>
+            <button type="button" class="wl-link-btn" onclick="toggleContact()">
+              Есть Telegram? Вернуться
+            </button>
+          </div>
+
+          <!-- Student toggle -->
+          <div class="wl-field">
+            <label>Вы студент?</label>
+            <div class="wl-segmented">
+              <label class="wl-seg-opt">
+                <input type="radio" name="wl-isStudent" value="yes" checked />
+                <div class="wl-seg-opt__label">Да</div>
+              </label>
+              <label class="wl-seg-opt">
+                <input type="radio" name="wl-isStudent" value="no" />
+                <div class="wl-seg-opt__label">Нет</div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Source -->
+          <div class="wl-field">
+            <label for="wl-source">Откуда вы о нас узнали?</label>
+            <div class="wl-input-wrap wl-input-wrap--select">
+              <select id="wl-source">
+                <option value="" disabled selected>Выберите вариант</option>
+                <option value="social">Социальные сети</option>
+                <option value="friend">От друзей/знакомых</option>
+                <option value="university">В университете</option>
+                <option value="search">Поисковая система</option>
+                <option value="other">Другое</option>
+              </select>
+              <span class="material-symbols-outlined wl-input-icon wl-input-icon--right" aria-hidden="true">keyboard_arrow_down</span>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="wl-submit">
+            <button type="submit" class="btn btn--primary btn--full btn--lg" id="wlSubmitBtn">
+              Отправить данные
+            </button>
+            <div class="wl-trust">
+              <span class="material-symbols-outlined text-teal icon-filled" aria-hidden="true">lock</span>
+              Ваши данные в безопасности
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // ── Toggle Telegram / Phone ──────────────────────────────
+    function toggleContact() {
+      const tgWrap    = document.getElementById('wlTelegramWrap');
+      const phoneWrap = document.getElementById('wlPhoneWrap');
+      const showTg    = tgWrap.style.display !== 'none';
+
+      if (showTg) {
+        tgWrap.style.display    = 'none';
+        phoneWrap.style.display = '';
+        document.getElementById('wl-telegram').value = '';
+      } else {
+        tgWrap.style.display    = '';
+        phoneWrap.style.display = 'none';
+        document.getElementById('wl-phone').value = '';
+      }
+    }
+
+    // ── Form submission ──────────────────────────────────────
+    function submitWaitlist(e) {
+      e.preventDefault();
+
+      const firstName = document.getElementById('wl-firstName').value.trim();
+      const city      = document.getElementById('wl-city').value.trim();
+
+      if (!firstName) { shakeField('wl-firstName'); return; }
+      if (!city)      { shakeField('wl-city');      return; }
+
+      const btn = document.getElementById('wlSubmitBtn');
+      btn.textContent = 'Отправляем…';
+      btn.disabled = true;
+
+      const data = {
+        firstName,
+        lastName:  document.getElementById('wl-lastName').value.trim(),
+        city,
+        telegram:  document.getElementById('wl-telegram').value.trim().replace(/^@/, ''),
+        phone:     document.getElementById('wl-phone') ? document.getElementById('wl-phone').value.trim() : '',
+        isStudent: document.querySelector('input[name="wl-isStudent"]:checked')?.value || 'yes',
+        source:    document.getElementById('wl-source').value,
+        timestamp: new Date().toISOString(),
+      };
+
+      try {
+        const existing = JSON.parse(localStorage.getItem('sosedno_waitlist') || '[]');
+        existing.push(data);
+        localStorage.setItem('sosedno_waitlist', JSON.stringify(existing));
+      } catch (_) {}
+
+      setTimeout(() => {
+        document.getElementById('wlFormWrap').style.display = 'none';
+        document.getElementById('wlSuccess').style.display  = 'flex';
+        btn.disabled = false;
+      }, 900);
+    }
+
+    // ── Shake invalid field ──────────────────────────────────
+    function shakeField(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.add('wl-shake');
+      el.focus();
+      el.addEventListener('animationend', () => el.classList.remove('wl-shake'), { once: true });
+    }
+  </script>
+</body>
+</html>
