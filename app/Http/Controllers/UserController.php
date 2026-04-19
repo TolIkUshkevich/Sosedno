@@ -15,5 +15,17 @@ class UserController extends Controller
         $telegramUserName = $request->input('telegram_user_name');
         $status = $request->input('status');
         $referralSource = $request->input('referral_source');
+        
+        User::create([
+            'name' => $name,
+            'surname' => $surname,
+            'age' => $age,
+            'city' => $city,
+            'natelegram_user_nameme' => $telegramUserName,
+            'nastatusme' => $status,
+            'referral_source' => $referralSource    
+        ]);
+
+        return response('ok', 200);
     }
 }
