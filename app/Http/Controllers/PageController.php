@@ -10,8 +10,7 @@ class PageController extends Controller
         return view('lending');
     }
 
-    function mainPage(Request $request)
-    {
-        return view('mainPage');
+    function waitlist(Request $request) {
+        return view('waitlist');
     }
 }

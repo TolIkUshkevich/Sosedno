@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="waitlist.css" />
+  @vite('resources/css/app.css')
+  @vite('resources/css/waitlist.css')
 </head>
 <body class="wl-body">
 
@@ -47,7 +47,7 @@
         <span class="material-symbols-outlined wl-success__icon icon-filled" aria-hidden="true">check_circle</span>
         <h1>Вы в списке!</h1>
         <p>Мы свяжемся с вами в Telegram, когда запустимся в вашем городе.</p>
-        <a href="index.html" class="btn btn--primary btn--lg">Вернуться на главную</a>
+        <a href="{{ route('lending') }}" class="btn btn--primary btn--lg">Вернуться на главную</a>
       </div>
 
       <!-- Form content -->
